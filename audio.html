@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Аудіоплеєр</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .player-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        audio {
+            width: 100%;
+            margin: 20px 0;
+        }
+        .playlist {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .playlist li {
+            padding: 10px;
+            border: 1px solid #eee;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .playlist li:hover, .playlist li.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-card">
+        <h3>Мій Плейлист</h3>
+        <div id="track-title" style="font-weight: bold; margin-bottom: 10px;">Трек 1</div>
+        
+        <audio id="audio-player" controls>
+            <source id="audio-source" src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            Ваш браузер не підтримує аудіо.
+        </audio>
+
+        <ul class="playlist">
+            <li class="active" data-src="https://www.w3schools.com/html/horse.mp3">Спів коня (Тестовий трек)</li>
+            <li data-src="https://file-examples.com/storage/fe07b3b70866ea1cd7773db/2017/11/file_example_MP3_700KB.mp3">Короткий аудіо-запис 1</li>
+            <li data-src="https://file-examples.com/storage/fe07b3b70866ea1cd7773db/2017/11/file_example_MP3_1MG.mp3">Короткий аудіо-запис 2</li>
+        </ul>
+        
+        <a href="index.html" class="back-link">← На головну</a>
+    </div>
+
+    <script>
+        const player = document.getElementById('audio-player');
+        const source = document.getElementById('audio-source');
+        const title = document.getElementById('track-title');
+        const listItems = document.querySelectorAll('.playlist li');
+
+        listItems.forEach(item => {
+            item.addEventListener('click', function() {
+                listItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                source.src = this.getAttribute('data-src');
+                title.textContent = this.textContent;
+                
+                player.load();
+                player.play();
+            });
+        });
+    </script>
+</body>
+</html>

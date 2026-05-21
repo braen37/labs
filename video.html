@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Відеоплеєр</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        video {
+            width: 100%;
+            border-radius: 6px;
+            background-color: #000;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Практичний відеоплеєр</h2>
+        <video controls poster="https://via.placeholder.com/800x450?text=Натисніть+для+відтворення">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Ваш браузер не підтримує тег video.
+        </video>
+        <br>
+        <a href="index.html" class="back-link">← Назад до головної</a>
+    </div>
+</body>
+</html>
